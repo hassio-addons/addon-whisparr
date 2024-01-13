@@ -1,0 +1,10 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Home Assistant Community Add-on: Whisparr
+# Runs Whisparr
+# ==============================================================================
+
+bashio::log.info 'Starting Whisparr...'
+
+exec /opt/bin/Whisparr -nobrowser -data=/config
