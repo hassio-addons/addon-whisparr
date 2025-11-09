@@ -18,8 +18,7 @@ RUN \
     xmlstarlet=1.6.1-r2 \
   \
   && if [ "${BUILD_ARCH}" = "aarch64" ]; then WHISPARR_ARCH="arm64"; \
-  elif [ "${BUILD_ARCH}" = "amd64" ]; then WHISPARR_ARCH="x64"; \
-  elif [ "${BUILD_ARCH}" = "armv7" ]; then WHISPARR_ARCH="arm"; fi \
+  elif [ "${BUILD_ARCH}" = "amd64" ]; then WHISPARR_ARCH="x64"; fi \
   \
   && curl -J -L -o /tmp/whisparr.tar.gz \
       "https://whisparr.servarr.com/v1/update/nightly/updatefile?version=${WHISPARR_VERSION}&os=linuxmusl&runtime=netcore&arch=${WHISPARR_ARCH}" \
