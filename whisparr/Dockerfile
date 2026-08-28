@@ -6,7 +6,7 @@ FROM ${BUILD_FROM}
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Setup base
-ARG WHISPARR_VERSION="2.0.0.1331"
+ARG WHISPARR_VERSION="2.2.0-release.231"
 ARG BUILD_ARCH=amd64
 ARG BUILD_VERSION=dev
 ENV XDG_CONFIG_HOME="/config/xdg"
@@ -21,7 +21,7 @@ RUN \
   elif [ "${BUILD_ARCH}" = "amd64" ]; then WHISPARR_ARCH="x64"; fi \
   \
   && curl -J -L -o /tmp/whisparr.tar.gz \
-      "https://whisparr.servarr.com/v1/update/nightly/updatefile?version=${WHISPARR_VERSION}&os=linuxmusl&runtime=netcore&arch=${WHISPARR_ARCH}" \
+      "https://github.com/Whisparr/Whisparr/releases/download/v${WHISPARR_VERSION}/Whisparr.${WHISPARR_VERSION}.linux-musl-${WHISPARR_ARCH}.tar.gz" \
   && mkdir -p /opt/bin \
   && tar zxvf \
       /tmp/whisparr.tar.gz \

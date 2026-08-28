@@ -43,6 +43,7 @@
       ],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "Whisparr/Whisparr",
+      "versioningTemplate": "loose",
       "extractVersionTemplate": "^v(?<version>.*)$"
     }
   ],
