@@ -1,7 +1,7 @@
 #!/command/with-contenv bashio
 # shellcheck shell=bash
 # ==============================================================================
-# Home Assistant Community Add-on: Whisparr
+# Home Assistant Community App: Whisparr
 # Take down the S6 supervision tree when Whisparr fails
 # ==============================================================================
 declare exit_code_container
