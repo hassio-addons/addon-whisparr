@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/base:19.0.0
+ARG BUILD_FROM=ghcr.io/hassio-addons/base:21.0.3
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -6,22 +6,22 @@ FROM ${BUILD_FROM}
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Setup base
-ARG WHISPARR_VERSION="2.0.0.1331"
+ARG WHISPARR_VERSION="2.2.0-release.231"
 ARG BUILD_ARCH=amd64
 ARG BUILD_VERSION=dev
 ENV XDG_CONFIG_HOME="/config/xdg"
 # hadolint ignore=DL3003,DL3042
 RUN \
   apk add --no-cache \
-    icu-libs=76.1-r1 \
-    sqlite-libs=3.49.2-r1 \
+    icu-libs=78.1-r0 \
+    sqlite-libs=3.53.4-r0 \
     xmlstarlet=1.6.1-r2 \
   \
   && if [ "${BUILD_ARCH}" = "aarch64" ]; then WHISPARR_ARCH="arm64"; \
   elif [ "${BUILD_ARCH}" = "amd64" ]; then WHISPARR_ARCH="x64"; fi \
   \
   && curl -J -L -o /tmp/whisparr.tar.gz \
-      "https://whisparr.servarr.com/v1/update/nightly/updatefile?version=${WHISPARR_VERSION}&os=linuxmusl&runtime=netcore&arch=${WHISPARR_ARCH}" \
+      "https://github.com/Whisparr/Whisparr/releases/download/v${WHISPARR_VERSION}/Whisparr.${WHISPARR_VERSION}.linux-musl-${WHISPARR_ARCH}.tar.gz" \
   && mkdir -p /opt/bin \
   && tar zxvf \
       /tmp/whisparr.tar.gz \
